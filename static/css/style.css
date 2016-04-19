@@ -1,0 +1,46 @@
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: white;
+}
+
+#controls img {
+    width: 32px;
+    height: 32px;
+}
+.transit {
+    transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, transform 1s;
+    -moz-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -moz-transform 1s;
+    -webkit-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s, -webkit-transform 1s;
+    -o-transition: left 1s, top 1s, right 1s, bottom 1s, width 1s, height 1s,-o-transform 1s;
+}
+
+
+#killButton {
+    opacity:0.7;
+}
+
+#killButton:hover {
+    opacity:1.0;
+}
+
+#muteButton {
+    opacity:0.7;
+    width: 56px;
+    height: 56px;
+}
+
+#muteButton:hover {
+    opacity:1.0;
+}

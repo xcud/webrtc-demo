@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+        <link crossorigin="anonymous" href="/css/style.css" media="all" rel="stylesheet" />
+        <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="js/demo_multiparty.js"></script>
+    </head>
+
+    <body onload="appInit()">
+        
+        <script>
+            
+            var isCameraEnabled = true;
+            function toggleCamera() {
+                isCameraEnabled = !isCameraEnabled;
+                easyrtc.enableCamera(isCameraEnabled);
+                document.getElementById("cameraButton").setAttribute("src", isCameraEnabled ? "images/video-enabled.png" : "images/video-disabled.png");
+                console.log("isCameraEnabled = " + isCameraEnabled);
+            }
+
+            var isMicEnabled = true;
+            function toggleMicrophone() {
+                isMicEnabled = !isMicEnabled;
+                easyrtc.enableMicrophone(isMicEnabled);
+                document.getElementById("microphoneButton").setAttribute("src", isMicEnabled ? "images/microphone-enabled.png" : "images/microphone-disabled.png");
+                console.log("isMicEnabled = " + isMicEnabled);
+            }
+        </script>
+        
+        <div id="fullpage"  class="boxCommon">
+            <video id="box0" class="transit boxCommon thumbCommon easyRTCMirror" muted="muted" volume="0" ></video>
+            <video id="box1" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
+            <video id="box2" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
+            <video id="box3" class="transit boxCommon thumbCommon" style="visibility:hidden"></video>
+            
+            <div id="textentryBox" onsubmit="sendText()" style="display:none" >
+                <input type="text" id="textentryField"  class="transit boxcommon" /><br>
+                <button id="textentrySubmit" style="float:right;margin-right:1em" onclick="sendText()">Send</button>
+                <button id="textentryCancel" style="float:left;margin-left:1em" onclick="cancelText()">Cancel</button>
+            </div>
+
+            <div id="controls">
+                <img id="cameraButton" class="transit boxCommon" onclick="toggleCamera()" src="images/video-enabled.png" style="z-index:3" alt="camera button" />
+                <img id="microphoneButton" class="transit boxCommon" onclick ="toggleMicrophone()" src="images/microphone-enabled.png" style="z-index:3" alt="microphone button" />
+            </div>
+        </div>
+    </body>
+</html>
